@@ -17,5 +17,5 @@ jobs:
       - name: setup user
         run: $GITHUB_WORKSPACE/.github/workflows/ci_user_setup.sh
       - name: setup
-        run: su - tester -c "$GITHUB_WORKSPACE/setup.sh"
+        run: su - tester -c "CI=true $GITHUB_WORKSPACE/setup.sh"
       
