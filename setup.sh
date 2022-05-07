@@ -51,7 +51,7 @@ install_vscode
 setup_pyenv
 
 echo "Init pyenv for this shell"
-${BASEDIR}/pyenv_profile.sh
+source ${BASEDIR}/pyenv_profile.sh
 
 install_python 3.8.13
 python --version
