@@ -5,11 +5,14 @@ set -euo pipefail
 PROFILE_PATH=~/.bashrc
  
 setup_pyenv () {
- 
+
 	if [ -d ~/.pyenv ]; then
 		echo "pyenv already installed, skipping"
 		return 0
 	fi
+
+	echo "Install python pre-reqs"
+	sudo yum install -y make gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
  
 	echo "Install pyenv..."
 	curl https://pyenv.run | bash
