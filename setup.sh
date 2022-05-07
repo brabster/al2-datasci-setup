@@ -76,7 +76,7 @@ install_docker () {
 
 sudo yum update -y
 
-if [ -z ${var+x} ]; then
+if [ -z ${CI+x} ]; then
 	install_docker
 else
 	echo "In CI, skipping docker as it won't work here"
