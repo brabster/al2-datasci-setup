@@ -1,0 +1,27 @@
+name: test_install
+on:
+  - push
+jobs:
+  test_install:
+    runs-on: ubuntu-latest
+    container:
+      image: amazonlinux:2
+      env:
+        DEBIAN_FRONTEND: noninteractive
+    steps:
+      - name: debug info
+        run: |
+          cat /etc/lsb-release
+      - name: setup user
+        run: |
+          adduser --disabled-password --quiet --gecos '' tester
+          adduser tester sudo
+          echo "tester  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/tester
+          su - tester -c id
+          su - tester -c "mkdir -p /home/tester/Downloads"
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: setup
+        run: |
+          su - tester -c "$GITHUB_WORKSPACE/setup.sh"
+      

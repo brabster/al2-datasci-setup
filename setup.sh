@@ -44,7 +44,11 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
     yum check-update
 	sudo yum install code
 }
- 
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get autoremove
+
 install_vscode
  
 setup_pyenv
