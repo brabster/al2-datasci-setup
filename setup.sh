@@ -45,9 +45,7 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 	sudo yum install code
 }
 
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get autoremove
+sudo yum update -y
 
 install_vscode
  

@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: setup user
         run: |
+          yum install -y shadow-utils
           adduser --disabled-password --quiet --gecos '' tester
           adduser tester sudo
           echo "tester  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/tester
