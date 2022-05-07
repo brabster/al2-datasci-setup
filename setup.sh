@@ -18,9 +18,9 @@ setup_pyenv () {
 	cat << EOF >> ${PROFILE_PATH}
  
 #### pyenv support
-export PATH="~/.pyenv/shims:~/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export PATH="~/.pyenv/shims:~/.pyenv/bin:\$PATH"
+eval "\$(pyenv init -)"
+eval "\$(pyenv virtualenv-init -)"
 #### done
 EOF
 
