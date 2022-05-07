@@ -9,16 +9,10 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
     steps:
-      - name: setup user
-        run: |
-          yum install -y shadow-utils sudo util-linux tar git
-          adduser tester
-          echo "tester  ALL=(ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/tester
-          su - tester -c id
-          su - tester -c "mkdir -p /home/tester/Downloads"
       - name: checkout
         uses: actions/checkout@v3
+      - name: setup user
+        run: $GITHUB_WORKSPACE/.github/workflows/ci_user_setup.sh
       - name: setup
-        run: |
-          su - tester -c "$GITHUB_WORKSPACE/setup.sh"
+        run: su - tester -c "$GITHUB_WORKSPACE/setup.sh"
       

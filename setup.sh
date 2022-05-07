@@ -3,6 +3,7 @@
 set -euo pipefail
 
 PROFILE_PATH=~/.bashrc
+BASEDIR=$(dirname "$0")
  
 setup_pyenv () {
  
@@ -15,14 +16,7 @@ setup_pyenv () {
 	curl https://pyenv.run | bash
  
 	echo "Initialising pyenv..."
-	cat << EOF >> ${PROFILE_PATH}
- 
-#### pyenv support
-export PATH="~/.pyenv/shims:~/.pyenv/bin:\$PATH"
-eval "\$(pyenv init -)"
-eval "\$(pyenv virtualenv-init -)"
-#### done
-EOF
+	echo "source ${BASEDIR}/pyenv_profile.sh" >> ${PROFILE_PATH}
 
 	echo "Updated ${PROFILE_PATH}"
 	cat ${PROFILE_PATH}
@@ -56,8 +50,8 @@ install_vscode
  
 setup_pyenv
 
-echo "Sourcing updated profile..."
-source ~/.bash_profile
+echo "Init pyenv for this shell"
+source ${BASEDIR}/pyenv_profile.sh
 
 install_python 3.8.13
 python --version
