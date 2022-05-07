@@ -68,7 +68,7 @@ install_pipenv () {
 }
 
 install_docker_rootless () {
-	
+	echo "not yet implemented"
 }
 
 sudo yum update -y
