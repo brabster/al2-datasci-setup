@@ -9,9 +9,6 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
     steps:
-      - name: debug info
-        run: |
-          cat /etc/lsb-release
       - name: setup user
         run: |
           adduser --disabled-password --quiet --gecos '' tester
