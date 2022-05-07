@@ -3,6 +3,7 @@
 set -euo pipefail
 
 PROFILE_PATH=~/.bashrc
+PY_VERSION=3.8.13
  
 setup_pyenv () {
 
@@ -53,6 +54,23 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 	sudo yum install -y code
 }
 
+install_pipenv () {
+	expected_py_version=$1
+	actual_py_version=$(python --version)
+
+	if [[ "${actual_py_version}" != *"${expected_py_version}"* ]]; then
+		echo "Detected incorrect Python version ${actual_py_version} (expected like ${expected_py_version}), aborting"
+		return 1
+	fi
+
+	pip install --user pipx
+	pipx install pipenv
+}
+
+install_docker_rootless () {
+	
+}
+
 sudo yum update -y
 
 install_vscode
@@ -64,7 +82,9 @@ export PS1=${PS1:-""}
 export PROMPT_COMMAND=${PS1}
 source ~/.bash_profile
 
-install_python 3.8.13
+install_python ${PY_VERSION}
 python --version
+
+install_pipenv ${PY_VERSION}
  
- 
+#install_docker_rootless 
