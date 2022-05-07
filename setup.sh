@@ -70,18 +70,16 @@ install_pipenv () {
 install_docker () {
 	sudo yum install -y docker
 	sudo systemctl start docker
-	sudo groupadd docker
+	sudo groupadd docker || true
 	sudo usermod -aG docker ${USER}
-	sudo newgrp docker
-	docker ps
 }
 
 sudo yum update -y
 
-if [[ "${CI}" == "true" ]]; then
-	echo "In CI, skipping docker as it won't work here"
-else
+if [ -z ${var+x} ]; then
 	install_docker
+else
+	echo "In CI, skipping docker as it won't work here"
 fi
 
 install_vscode
@@ -91,7 +89,9 @@ setup_pyenv
 echo "Sourcing updated profile..."
 export PS1=${PS1:-""}
 export PROMPT_COMMAND=${PS1}
+set +u
 source ~/.bash_profile
+set -u
 
 install_python ${PY_VERSION}
 python --version
