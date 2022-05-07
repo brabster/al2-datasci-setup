@@ -67,8 +67,13 @@ install_pipenv () {
 	pipx install pipenv
 }
 
-install_docker_rootless () {
-	echo "not yet implemented"
+install_docker () {
+	sudo yum install -y docker
+	sudo systemctl start docker
+	sudo groupadd docker
+	sudo usermod -aG docker ${USER}
+	sudo newgrp docker
+	docker ps
 }
 
 sudo yum update -y
@@ -87,4 +92,4 @@ python --version
 
 install_pipenv ${PY_VERSION}
  
-#install_docker_rootless 
+install_docker
