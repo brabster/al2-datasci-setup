@@ -23,6 +23,7 @@ eval "\$(pyenv virtualenv-init -)"
 EOF
 
 	echo "Updated ~/.bashrc"
+	cat ~/.bashrc
  
 }
  
