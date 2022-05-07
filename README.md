@@ -7,4 +7,4 @@
 - `wget https://raw.githubusercontent.com/brabster/al2-datasci-setup/main/setup.sh` to download the setup script to your home directory
 - `chmod 775 setup.sh` to make the script executable
 - `./setup.sh` to install the course software
-- You will need to log out and back in again to use Docker
+- You will need to log out and back in again to use Docker (Systen -> Log Out)
