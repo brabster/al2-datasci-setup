@@ -11,10 +11,8 @@ jobs:
     steps:
       - name: setup user
         run: |
-          yum install -y shadow-utils
-          adduser --disabled-password --quiet --gecos '' tester
-          adduser tester sudo
-          echo "tester  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/tester
+          yum install -y shadow-utils sudo util-linux
+          echo "tester  ALL=(ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/tester
           su - tester -c id
           su - tester -c "mkdir -p /home/tester/Downloads"
       - name: checkout
