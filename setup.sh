@@ -52,7 +52,7 @@ setup_pyenv
 
 echo "Init pyenv for this shell"
 export PS1=${PS1:-""}
-source ${BASEDIR}/pyenv_profile.sh
+source ~/.bash_profile
 
 install_python 3.8.13
 python --version
