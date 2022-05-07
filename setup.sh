@@ -56,8 +56,8 @@ install_vscode
  
 setup_pyenv
 
-echo "Sourcing updated ${PROFILE_PATH}..."
-. ${PROFILE_PATH}
+echo "Sourcing updated profile..."
+source ~/.bash_profile
 
 install_python 3.8.13
 python --version
