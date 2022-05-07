@@ -9,6 +9,8 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
     steps:
+      - name: install pre-reqs
+        run: yum install -y tar git
       - name: checkout
         uses: actions/checkout@v3
       - name: setup user
