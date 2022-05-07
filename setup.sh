@@ -92,9 +92,10 @@ python --version
 
 install_pipenv ${PY_VERSION}
 
-if [[ "${DEBIAN_FRONTEND}" == "noninteractive" ]]; then
+if [[ "${CI}" == "true" ]]; then
 	echo "In CI, skipping docker as it won't work here"
 else
 	install_docker
 fi
 
+sudo yum install -y htop
