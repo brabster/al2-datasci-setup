@@ -91,5 +91,10 @@ install_python ${PY_VERSION}
 python --version
 
 install_pipenv ${PY_VERSION}
- 
-install_docker
+
+if [[ "${DEBIAN_FRONTEND}" == "noninteractive" ]]; then
+	echo "In CI, skipping docker as it won't work here"
+else
+	install_docker
+fi
+
