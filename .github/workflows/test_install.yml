@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: setup user
         run: |
-          yum install -y shadow-utils sudo util-linux
+          yum install -y shadow-utils sudo util-linux tar
           adduser tester
           echo "tester  ALL=(ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/tester
           su - tester -c id
