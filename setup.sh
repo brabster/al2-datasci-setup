@@ -2,7 +2,7 @@
  
 set -euo pipefail
 
-PROFILE_PATH=~/.bash_profile
+PROFILE_PATH=~/.bashrc
  
 setup_pyenv () {
  
@@ -18,9 +18,9 @@ setup_pyenv () {
 	cat << EOF >> ${PROFILE_PATH}
  
 #### pyenv support
-export PATH="~/.pyenv/shims:~/.pyenv/bin:\$PATH"
-eval "\$(pyenv init -)"
-eval "\$(pyenv virtualenv-init -)"
+export PATH="~/.pyenv/shims:~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 #### done
 EOF
 
