@@ -58,6 +58,7 @@ setup_pyenv
 
 echo "Sourcing updated profile..."
 export PS1=${PS1:-""}
+export PROMPT_COMMAND=${PS1}
 source ~/.bash_profile
 
 install_python 3.8.13
