@@ -20,13 +20,15 @@ export PATH="~/.pyenv/shims:~/.pyenv/bin:\$PATH"
 eval "\$(pyenv init -)"
 eval "\$(pyenv virtualenv-init -)"
 #### done
- 
 EOF
+
+	echo "Updated ~/.bashrc"
  
 }
  
 install_python () {
 	version=$1
+	echo "Install Python $version"
 	pyenv install $version 
 	pyenv global $version
 	pyenv rehash
@@ -50,6 +52,10 @@ sudo yum update -y
 install_vscode
  
 setup_pyenv
+
+echo "Sourcing updated .bashrc..."
+. ~/.bashrc
+
 install_python 3.8.13
 python --version
  
