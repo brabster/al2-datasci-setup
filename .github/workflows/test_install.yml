@@ -8,6 +8,7 @@ jobs:
       image: amazonlinux:2
       env:
         DEBIAN_FRONTEND: noninteractive
+        CI: 'true'
     steps:
       - name: install pre-reqs
         run: yum install -y tar git

@@ -78,6 +78,12 @@ install_docker () {
 
 sudo yum update -y
 
+if [[ "${CI}" == "true" ]]; then
+	echo "In CI, skipping docker as it won't work here"
+else
+	install_docker
+fi
+
 install_vscode
  
 setup_pyenv
@@ -91,11 +97,5 @@ install_python ${PY_VERSION}
 python --version
 
 install_pipenv ${PY_VERSION}
-
-if [[ "${CI}" == "true" ]]; then
-	echo "In CI, skipping docker as it won't work here"
-else
-	install_docker
-fi
 
 sudo yum install -y htop
