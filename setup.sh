@@ -99,3 +99,5 @@ python --version
 install_pipenv ${PY_VERSION}
 
 sudo yum install -y htop
+
+echo 'echo "Check for and install software updates daily!"' > $PROFILE_PATH
