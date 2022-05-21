@@ -1,6 +1,8 @@
 name: test_install
 on:
   - push
+  - schedule:
+      - cron: "0 0 * * *"
 jobs:
   test_install:
     runs-on: ubuntu-latest
@@ -8,7 +10,6 @@ jobs:
       image: amazonlinux:2
       env:
         DEBIAN_FRONTEND: noninteractive
-        CI: 'true'
     steps:
       - name: install pre-reqs
         run: yum install -y tar git
