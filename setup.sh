@@ -76,6 +76,8 @@ install_docker () {
 
 sudo yum update -y
 
+cp ${PROFILE_PATH} ${PROFILE_PATH}.backup
+
 if [ -z ${CI+x} ]; then
 	install_docker
 else
@@ -87,11 +89,11 @@ install_vscode
 setup_pyenv
 
 echo "Sourcing updated profile..."
+set +u # we don't control the profile scripts and they may contain undefined variables...
 export PS1=${PS1:-""}
 export PROMPT_COMMAND=${PS1}
-set +u
 source ~/.bash_profile
-set -u
+set -u # back to checking for undefined variables
 
 install_python ${PY_VERSION}
 python --version
@@ -100,4 +102,4 @@ install_pipenv ${PY_VERSION}
 
 sudo yum install -y htop
 
-echo 'echo "Check for and install software updates daily!"' > $PROFILE_PATH
+echo 'echo "Check for and install software updates daily!"' >> $PROFILE_PATH
