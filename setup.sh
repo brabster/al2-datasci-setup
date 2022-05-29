@@ -114,8 +114,6 @@ install_pipenv ${PY_VERSION}
 
 install_phase2_libs
 
-check_sqlite3_installed
-
 sudo yum install -y htop sqlite
 
 echo 'echo "Check for and install software updates daily!"' >> $PROFILE_PATH
