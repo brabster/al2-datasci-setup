@@ -78,7 +78,7 @@ install_docker () {
 }
 
 install_phase2_libs () {
-	pip install -r $GITHUB_WORKSPACE/phase2_requirements.txt
+	pip install -r $PROJECT_DIR/phase2_requirements.txt
 }
 
 
