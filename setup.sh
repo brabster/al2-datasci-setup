@@ -2,6 +2,7 @@
  
 set -euo pipefail
 
+PROJECT_DIR=$1
 PROFILE_PATH=~/.bashrc
 PY_VERSION=3.8.13
  
