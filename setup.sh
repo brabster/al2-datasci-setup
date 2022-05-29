@@ -74,6 +74,11 @@ install_docker () {
 	sudo usermod -aG docker ${USER}
 }
 
+install_phase2_libs () {
+	pip install -r phase2_requirements.txt
+}
+
+
 sudo yum update -y
 
 cp ${PROFILE_PATH} ${PROFILE_PATH}.backup
@@ -99,6 +104,8 @@ install_python ${PY_VERSION}
 python --version
 
 install_pipenv ${PY_VERSION}
+
+install_phase2_libs
 
 sudo yum install -y htop
 
