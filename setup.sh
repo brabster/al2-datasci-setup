@@ -2,7 +2,6 @@
  
 set -euo pipefail
 
-PROJECT_DIR=$1
 PROFILE_PATH=~/.bashrc
 PY_VERSION=3.8.13
  
@@ -78,7 +77,13 @@ install_docker () {
 }
 
 install_phase2_libs () {
-	pip install -r $PROJECT_DIR/phase2_requirements.txt
+	pip install numpy \
+		matplotlib \
+		pandas \
+		sklearn \
+		keras \
+		tensorflow \
+		torch
 }
 
 sudo yum update -y
