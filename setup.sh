@@ -65,6 +65,8 @@ install_pipenv () {
 
 	pip install --user pipx
 	pipx install pipenv
+	pip install --upgrade pip
+
 }
 
 install_docker () {
@@ -75,7 +77,7 @@ install_docker () {
 }
 
 install_phase2_libs () {
-	pip install -r phase2_requirements.txt
+	pip install -r $GITHUB_WORKSPACE/phase2_requirements.txt
 }
 
 
