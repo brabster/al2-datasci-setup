@@ -221,7 +221,6 @@ Resources:
   WorkspacesDefaultRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName:  workspaces_DefaultRole
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonWorkSpacesServiceAccess
         - arn:aws:iam::aws:policy/AmazonWorkSpacesSelfServiceAccess
