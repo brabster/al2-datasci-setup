@@ -63,14 +63,13 @@ install_pipenv () {
 		return 1
 	fi
 
-	pip install --user pipx
-	pipx install pipenv
 	pip install --upgrade pip
-
+	pip install pipenv
 }
 
 install_docker () {
 	sudo yum install -y docker
+	sudo systemctl enable docker
 	sudo systemctl start docker
 	sudo groupadd docker || true
 	sudo usermod -aG docker ${USER}
@@ -83,12 +82,13 @@ install_phase2_libs () {
 		sklearn \
 		keras \
 		tensorflow \
-		torch
+		torch \
+		httpie
 }
 
 sudo yum update -y
 sudo yum install -y deltarpm
-sudo yum install -y git tar htop httpie
+sudo yum install -y git tar htop sqlite
 
 cp ${PROFILE_PATH} ${PROFILE_PATH}.backup
 
@@ -106,7 +106,7 @@ echo "Sourcing updated profile..."
 set +u # we don't control the profile scripts and they may contain undefined variables...
 export PS1=${PS1:-""}
 export PROMPT_COMMAND=${PS1}
-source ~/.bash_profile
+source ${PROFILE_PATH}
 set -u # back to checking for undefined variables
 
 install_python ${PY_VERSION}
@@ -115,7 +115,5 @@ python --version
 install_pipenv ${PY_VERSION}
 
 install_phase2_libs
-
-sudo yum install -y htop sqlite
 
 echo 'echo "Check for and install software updates daily!"' >> $PROFILE_PATH

@@ -4,9 +4,9 @@ COPY .github .github/
 
 RUN .github/workflows/ci_user_setup.sh
 
-COPY setup.sh .
-
 USER tester
+WORKDIR /home/tester
 
 ENV CI=true
+COPY setup.sh .
 RUN ./setup.sh
