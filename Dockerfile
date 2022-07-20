@@ -10,3 +10,8 @@ WORKDIR /home/tester
 ENV CI=true
 COPY setup.sh .
 RUN ./setup.sh
+
+RUN python --version \
+    && pipenv --version \
+    && pip --version \
+    && http --version
