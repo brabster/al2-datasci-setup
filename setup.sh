@@ -87,6 +87,8 @@ install_phase2_libs () {
 }
 
 sudo yum update -y
+sudo yum install -y deltarpm
+sudo yum install -y git tar htop httpie
 
 cp ${PROFILE_PATH} ${PROFILE_PATH}.backup
 
