@@ -80,7 +80,7 @@ install_phase2_libs () {
 	pip install numpy \
 		matplotlib \
 		pandas \
-		sklearn \
+		scikit-learn \
 		keras \
 		tensorflow \
 		torch
