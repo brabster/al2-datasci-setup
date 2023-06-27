@@ -13,3 +13,4 @@
 
 A [CloudFormation template](infrastructure_example/workspaces.yml) is provided to bootstrap a VPC, SimpleAD Directory and permissions for running workspaces.
 In a real implementation some alterations may be needed, for example to deploy into an existing VPC and re-use existing NAT Gateways rather than pay for new ones.
+
